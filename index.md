@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "Вики Кошкокрафта"
-  text: "Узнай доролнительные знания!"
+  text: "Найди новые знания!"
   tagline: "Сделано сообществом."
   image:
     src: /icon_purple.png
