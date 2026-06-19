@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
+
 export default defineConfig({
   srcDir: ".",
   title: "Вики Кошкокрафта",
@@ -10,8 +11,10 @@ export default defineConfig({
 
   head: [
     // Правильный путь к логотипу вкладки (фавиконке) для вашего репозитория:
-    ['link', { rel: 'icon', href: '/Community-WikiCatcraft/Assets/icon_purple.png' }]
+    ['link', { rel: 'icon', href: '/Assets/icon_purple.png' }]
   ],
+
+  
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
