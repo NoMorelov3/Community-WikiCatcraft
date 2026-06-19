@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  srcDir: "..",
+  srcDir: ".",
   
   title: "Вики Кошкокрафта",
   description: "Данная вики была создана сообществом и не является оригинальной",
