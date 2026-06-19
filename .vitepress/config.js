@@ -9,14 +9,14 @@ export default defineConfig({
   lang: 'ru',
   publicDir: "Assets",
   base: '/Community-WikiCatcraft/', 
+  logo: '/icon_purple.png',
 
   head: [
-    // ИСПРАВЛЕНО: Добавлен base и слэш, чтобы GitHub Pages нашел иконку во вкладке
-    ['link', { rel: 'icon', href: '/icon_purple.png' }]
+    ['link', { rel: 'icon', href: 'icon_purple.png' }]
   ],
 
   themeConfig: {
-    // ДОБАВЛЕНО: Логотип в левом верхнем углу сайта
+
     logo: '/icon_purple.png',
 
     // https://vitepress.dev/reference/default-theme-config
