@@ -6,6 +6,8 @@ export default defineConfig({
   
   title: "Вики Кошкокрафта",
   description: "Данная вики была создана сообществом и не является оригинальной",
+  lang: 'ru',
+  base: '/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
