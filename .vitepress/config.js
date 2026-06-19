@@ -7,18 +7,19 @@ export default defineConfig({
   title: "Вики Кошкокрафта",
   description: "Данная вики была создана сообществом и не является оригинальной",
   lang: 'ru',
+  publicDir: "Assets",
   base: '/Community-WikiCatcraft/', // НАЗВАНИЕ ВАШЕГО ПРОЕКТА
 
   head: [
     // Правильный путь к логотипу вкладки (фавиконке) для вашего репозитория:
-    ['link', { rel: 'icon', href: '/Assets/icon_purple.png' }]
+    ['link', { rel: 'icon', href: 'icon_purple.png' }]
   ],
 
   
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Кланы', link: '/clans/all.md' },
+      { text: 'Кланы', link: '/clans/all' },
       // { text: 'Examples', link: '/markdown-examples' }
     ],
 
@@ -27,8 +28,8 @@ export default defineConfig({
       {
         text: 'Валькирия',
         items: [
-          { text: 'История', link: '/clans/Valkyrie/History.md' },
-          { text: 'Общии фото', link: '/clans/Valkyrie/Photo.md' },
+          { text: 'История', link: '/clans/Valkyrie/History' },
+          { text: 'Общии фото', link: '/clans/Valkyrie/Photo' },
           ]
         }
       ],
@@ -50,7 +51,8 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'refinedgithub', link: 'https://github.com/NoMorelov3/Community-WikiCatcraft' },
+      { icon: 'spotify', link: 'https://open.spotify.com/playlist/05N92YWF1TCGfJMyH0gzHi?si=dfae0a5447b24a2a'}
     ]
   }
 })
