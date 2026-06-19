@@ -15,8 +15,8 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Кланы', link: '/clans' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Кланы', link: '/clans/all.md' },
+      // { text: 'Examples', link: '/markdown-examples' }
     ],
 
     sidebar: {
@@ -25,7 +25,7 @@ export default defineConfig({
         text: 'Валькирия',
         items: [
           { text: 'История', link: '/clans/Valkyrie/History.md' },
-          { text: 'Общии фото', link: '/clans/Valkyrie/Photo.md' }
+          { text: 'Общии фото', link: '/clans/Valkyrie/Photo.md' },
           ]
         }
       ],
