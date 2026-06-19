@@ -6,7 +6,7 @@ hero:
   text: "Официальная база знаний сервера"
   tagline: "Данная вики создана сообществом и содержит всё необходимое для комфортной игры."
   image:
-    src: /Assets/icon_purple.png
+    src: '/Assets/icon_purple.png'
     alt: Кошкокрафт Logo
   actions:
     - theme: brand

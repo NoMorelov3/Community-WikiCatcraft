@@ -3,11 +3,15 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: ".",
-  logo: 'Assets/icon_purple.png',
   title: "Вики Кошкокрафта",
   description: "Данная вики была создана сообществом и не является оригинальной",
   lang: 'ru',
   base: '/Community-WikiCatcraft/', // НАЗВАНИЕ ВАШЕГО ПРОЕКТА
+
+  head: [
+    // Правильный путь к логотипу вкладки (фавиконке) для вашего репозитория:
+    ['link', { rel: 'icon', href: '/Community-WikiCatcraft/Assets/icon_purple.png' }]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -20,8 +24,8 @@ export default defineConfig({
       {
         text: 'Валькирия',
         items: [
-          { text: 'Создание', link: '/clans/' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'История', link: '/clans/Valkyrie/History.md' },
+          { text: 'Общии фото', link: '/clans/Valkyrie/Photo.md' }
           ]
         }
       ],
