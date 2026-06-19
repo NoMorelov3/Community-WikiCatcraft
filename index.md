@@ -1,25 +1,26 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: "Вики Кошкокрафта"
-  text: "Данная вики была создана сообществом и не является оригинальной"
-  tagline: My great project tagline
+  text: "Официальная база знаний сервера"
+  tagline: "Данная вики создана сообществом и содержит всё необходимое для комфортной игры."
+  image:
+    src: /favicon.png
+    alt: Кошкокрафт Logo
   actions:
     - theme: brand
-      text: Markdown Examples
+      text: Начать играть
       link: /markdown-examples
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Наш GitHub
+      link: https://github.com/NoMorelov3/ForkWikiCatcraft
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: "🎮 Игровой процесс"
+    details: "Подробные гайды по механикам, командам и особенностям нашего кошачьего сервера."
+  - title: "🐱 Бестиарий и Мир"
+    details: "Узнайте всё о кастомных мобах, боссах и уникальных обитателях вселенной Кошкокрафта."
+  - title: "📜 Правила и Справка"
+    details: "Будьте в курсе актуального свода правил, чтобы игра приносила только удовольствие."
 ---
-
