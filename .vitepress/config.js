@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: ".",
-  
+  logo: 'Assets/icon_purple.png',
   title: "Вики Кошкокрафта",
   description: "Данная вики была создана сообществом и не является оригинальной",
   lang: 'ru',
@@ -11,19 +11,36 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
+      { text: 'Кланы', link: '/clans' },
       { text: 'Examples', link: '/markdown-examples' }
     ],
 
-    sidebar: [
+    sidebar: {
+      '/clans': [
       {
-        text: 'Examples',
+        text: 'Валькирия',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
+          { text: 'Создание', link: '/clans/' },
           { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
+          ]
+        }
+      ],
+      '/': [
+
+      ],
+      /*
+      '/': [
+        
+      ],
+      '/': [
+        
+      ],
+      '/': [
+        
+      ],
+      */
+
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
