@@ -12,7 +12,7 @@ export default defineConfig({
 
   head: [
     // ИСПРАВЛЕНО: Добавлен base и слэш, чтобы GitHub Pages нашел иконку во вкладке
-    ['link', { rel: 'icon', href: '/Community-WikiCatcraft/icon_purple.png' }]
+    ['link', { rel: 'icon', href: 'icon_purple.png' }]
   ],
 
   themeConfig: {
