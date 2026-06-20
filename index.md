@@ -64,8 +64,14 @@ features:
 <br><br>
 <br><br>
 
-<p style="text-align: center;"><h1>Наши разработчики</h1></p>
-<VPTeamMembers size="small" :members="Admins" />
-<br></br>
-# <p style="text-align: center;"><h1>Наши Саппорты</h1></p>
-<VPTeamMembers size="small" :members="Supports" />
+<h2 style="text-align: center;">Наши разработчики</h2>
+
+<div VPTeamMembers size="small" :members="Admins">
+</div>
+
+<br>
+
+<h2 style="text-align: center;">Наши Саппорты</h2>
+
+<div VPTeamMembers size="small" :members="Supports">
+</div>
