@@ -4,20 +4,20 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   srcDir: ".",
-  title: "Вики Кошкокрафта",
+  title: "FanCC",
   description: "Данная вики была создана сообществом и не является оригинальной",
   lang: 'ru',
   publicDir: "Assets",
   base: '/Community-WikiCatcraft/', 
-  logo: '/icon_purple.png',
+  logo: '/icon_yellow.png',
 
   head: [
-    ['link', { rel: 'icon', href: 'icon_purple.png' }]
+    ['link', { rel: 'icon', href: 'icon_yellow.png' }]
   ],
 
   themeConfig: {
 
-    logo: '/icon_purple.png',
+    logo: '/icon_yellow.png',
 
     
     nav: [
@@ -61,8 +61,9 @@ export default defineConfig({
 
     socialLinks: [
       
-      { icon: 'github', link: 'https://github.com/NoMorelov3/Community-WikiCatcraft' },
-      { icon: 'spotify', link: 'https://open.spotify.com/playlist/05N92YWF1TCGfJMyH0gzHi?si=dfae0a5447b24a2a' }
+      { text: 'Git Этой вики', icon: 'github', link: 'https://github.com/NoMorelov3/Community-WikiCatcraft' },
+      { text: 'Git Оригинальной вики', icon: 'github', link: 'https://wiki.catcraft.ru/' },
+      { text: '',  icon: 'spotify', link: 'https://open.spotify.com/playlist/05N92YWF1TCGfJMyH0gzHi?si=dfae0a5447b24a2a' }
     ]
   }
 })
