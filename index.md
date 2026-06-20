@@ -38,13 +38,23 @@ features:
 <script setup>
   import { VPTeamMembers } from 'vitepress/theme'
 
-  const members = [
+  const Admins = [
     {
       avatar: 'https://avatars.githubusercontent.com/u/169675635?v=4',
-      name: 'Эквадор (Он же Никитка)',
-      title: 'Создатель Вики ',
+      name: 'EHqador (Он же Никитка)',
+      title: 'Создатель этой Вики',
       links: [
         { icon: 'github', link: 'https://github.com/NoMorelov3' },
+      ]
+    },
+  ]
+  const Supports = [
+    {
+      avatar: 'https://cdn.discordapp.com/avatars/814139144241807380/600dabd77248656efdbd16eb51997794.webp?size=128',
+      name: 'dark_moooon',
+      title: 'мой любимый',
+      links: [
+        { icon: 'discord', link: 'https://discord.gg/zybj3EAsQg' },
       ]
     },
   ]
@@ -55,7 +65,7 @@ features:
 <br><br>
 
 # <p style="text-align: center;">Наши разработчики</p>
-
-<div style="display: flex; justify-content: center;">
-  <VPTeamMembers size="small" :members="members" />
-</div>
+<VPTeamMembers size="small" :members="Admins" />
+<br></br>
+# <p style="text-align: center;">Наши Саппорты</p>
+<VPTeamMembers size="small" :members="Supports" />
