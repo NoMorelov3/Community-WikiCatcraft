@@ -27,7 +27,7 @@ export default defineConfig({
 
   themeConfig: {
     footer: {
-      message: 'Сайт <a href="https://wiki.catcraft.ru/">Оригинальной вики:</a>',
+      message: 'Сайт оригинальной вики: <a href="https://wiki.catcraft.ru/">Ссылка</a>',
       copyright: '© 2026 – Серёжа котиков'
   },
     editLink: {
