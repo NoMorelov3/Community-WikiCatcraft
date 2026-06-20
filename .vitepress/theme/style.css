@@ -129,3 +129,12 @@
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
 }
 
+:h1 {
+  color: #ce6714;
+}
+:h2 {
+  color: #ca8248;
+}
+:h3 {
+  color: #c49066;
+}

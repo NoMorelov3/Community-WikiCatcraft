@@ -19,9 +19,7 @@ export default defineConfig({
         timeStyle: 'medium'
       }
     },
-  search: {
-    provider: 'local',
-    },
+  
   
 
   head: [
@@ -29,6 +27,9 @@ export default defineConfig({
   ],
 
   themeConfig: {
+    search: {
+      provider: 'local'
+    },
     footer: {
       message: 'Сайт оригинальной вики: <a href="https://wiki.catcraft.ru/">Ссылка</a>',
       copyright: '© 2026 – Серёжа котиков'
