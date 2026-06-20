@@ -15,3 +15,12 @@ export default {
     // ...
   }
 } satisfies Theme
+
+
+export interface Footer {
+  // Сообщение, отображаемое прямо перед копирайтом.
+  message?: string
+
+  // Уведомление об авторских правах.
+  copyright?: string
+}

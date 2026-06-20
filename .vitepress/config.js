@@ -19,6 +19,11 @@ export default defineConfig({
         indexName: '...'
       }
     },
+  footer: {
+      message: 'Сайт <a href="https://wiki.catcraft.ru/">Оригинальной вики:</a>',
+      copyright: '© 2026 – Серёжа котиков'
+  },
+
   head: [
     ['link', { rel: 'icon', href: 'icon_yellow.png' }]
   ],
@@ -72,8 +77,10 @@ export default defineConfig({
 
     socialLinks: [
       
-      { text: 'Git Этой вики', icon: 'github', link: 'https://github.com/NoMorelov3/Community-WikiCatcraft' },
-      { text: '',  icon: 'spotify', link: 'https://open.spotify.com/playlist/05N92YWF1TCGfJMyH0gzHi?si=dfae0a5447b24a2a' }
+      { icon: 'github', link: 'https://github.com/NoMorelov3/Community-WikiCatcraft' },
+      { icon: 'spotify', link: 'https://open.spotify.com/playlist/05N92YWF1TCGfJMyH0gzHi?si=dfae0a5447b24a2a' }
     ]
   }
 })
+
+
