@@ -19,16 +19,17 @@ export default defineConfig({
         indexName: '...'
       }
     },
-  footer: {
-      message: 'Сайт <a href="https://wiki.catcraft.ru/">Оригинальной вики:</a>',
-      copyright: '© 2026 – Серёжа котиков'
-  },
+  
 
   head: [
     ['link', { rel: 'icon', href: 'icon_yellow.png' }]
   ],
 
   themeConfig: {
+    footer: {
+      message: 'Сайт <a href="https://wiki.catcraft.ru/">Оригинальной вики:</a>',
+      copyright: '© 2026 – Серёжа котиков'
+  },
     editLink: {
       pattern: 'https://github.com/NoMorelov3/Community-WikiCatcraft/blob/main/:path'
     },
