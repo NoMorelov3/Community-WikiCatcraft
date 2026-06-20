@@ -10,12 +10,23 @@ export default defineConfig({
   publicDir: "Assets",
   base: '/Community-WikiCatcraft/', 
   logo: '/icon_yellow.png',
-
+  lastUpdated: true,
+  search: {
+    provider: 'algolia',
+      options: {
+        appId: '...',
+        apiKey: '...',
+        indexName: '...'
+      }
+    },
   head: [
     ['link', { rel: 'icon', href: 'icon_yellow.png' }]
   ],
 
   themeConfig: {
+    editLink: {
+      pattern: 'https://github.com/NoMorelov3/Community-WikiCatcraft/blob/main/:path'
+    },
 
     logo: '/icon_yellow.png',
 
@@ -62,7 +73,6 @@ export default defineConfig({
     socialLinks: [
       
       { text: 'Git Этой вики', icon: 'github', link: 'https://github.com/NoMorelov3/Community-WikiCatcraft' },
-      { text: 'Git Оригинальной вики', icon: 'github', link: 'https://wiki.catcraft.ru/' },
       { text: '',  icon: 'spotify', link: 'https://open.spotify.com/playlist/05N92YWF1TCGfJMyH0gzHi?si=dfae0a5447b24a2a' }
     ]
   }
