@@ -50,6 +50,13 @@ features:
   ]
 </script>
 
-# Разработчики
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+# <p style="text-align: center;">Наши разработчики</p>
 
 <VPTeamMembers size="small" :members />
