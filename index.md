@@ -26,7 +26,7 @@ features:
     details: |
       Скриншоты котиков от игроков Кошкокрафта.
 
-  - title: 💸 экономика
+  - title: 💸 Экономика
     details: |
       Развитие экономики,
       и взаимодействие игроков.
@@ -64,8 +64,8 @@ features:
 <br><br>
 <br><br>
 
-# <p style="text-align: center;">Наши разработчики</p>
+<p style="text-align: center;"><h1>Наши разработчики</h1></p>
 <VPTeamMembers size="small" :members="Admins" />
 <br></br>
-# <p style="text-align: center;">Наши Саппорты</p>
+# <p style="text-align: center;"><h1>Наши Саппорты</h1></p>
 <VPTeamMembers size="small" :members="Supports" />
