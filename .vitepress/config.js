@@ -3,13 +3,13 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 
 export default defineConfig({
-  
+  srcDir: ".",
   title: "FanCC",
   description: "Данная вики была создана сообществом и не является оригинальной",
   lang: 'ru',
   publicDir: "assets",
   base: process.env.NODE_ENV === 'production'
-    ? '/Community-Wiki/'
+    ? '/Community-WikiCatcraft/'
     : '/', 
   logo: '/icon_yellow.png',
   lastUpdated: {
