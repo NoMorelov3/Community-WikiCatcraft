@@ -7,7 +7,7 @@ export default defineConfig({
   title: "FanCC",
   description: "Данная вики была создана сообществом и не является оригинальной",
   lang: 'ru',
-  publicDir: "Assets",
+  publicDir: "assets",
   base: '/Community-WikiCatcraft/', 
   logo: '/icon_yellow.png',
   lastUpdated: true,

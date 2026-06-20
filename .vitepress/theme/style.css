@@ -68,9 +68,6 @@
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
-  --cc-main: #ff8844;
-  --cc-black: #101114;
-  --cc-white: #f5f5f5;
 }
 
 /**
@@ -130,8 +127,4 @@
   --vp-custom-block-tip-text: var(--vp-c-text-1);
   --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
-}
-
-:XXX-1 {
-  color: #d6da11;
 }

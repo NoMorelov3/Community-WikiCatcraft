@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "FanCC"
   text: "Найди новые знания!"
-  tagline: "Сделано сообществом."
+  tagline: "Сделано сообществом с любовью <3"
   image:
     src: /icon_yellow.png
     alt: Логотип Кошкокрафта
