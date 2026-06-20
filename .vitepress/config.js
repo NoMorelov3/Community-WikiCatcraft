@@ -43,14 +43,14 @@ export default defineConfig({
 
     
     nav: [
-      { text: 'Кланы', link: '/clans/all' },
-      { text: 'Общая история', link: '/history/history'},
-      { text: 'Котики', link: '/cats/index'}
+      { text: 'Кланы', link: '/clans/Valkyrie/History'},
+      { text: 'Общая история', link: '/history/admins/history'},
+      { text: 'Котики', link: '/cats/cats'}
     ],
 
     sidebar: {
       
-      '/clans/Valkyrie/History': [
+      '/clans/': [
         {
           text: 'Валькирия',
           items: [
@@ -67,7 +67,7 @@ export default defineConfig({
         }
         
       ],
-       '/history/admins/history': [
+       '/history/': [
         {
           text: 'Администрация',
           items: [
@@ -77,7 +77,7 @@ export default defineConfig({
         },
 
       ],
-      '/cats/cats': [
+      '/cats/': [
         {
           text: 'Ваши котики',
           items: [
