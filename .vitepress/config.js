@@ -19,13 +19,14 @@ export default defineConfig({
 
     logo: '/icon_purple.png',
 
-    // https://vitepress.dev/reference/default-theme-config
+    
     nav: [
-      { text: 'Кланы', link: '/clans/all' }
+      { text: 'Кланы', link: '/clans/all' },
+      { text: 'Общая история', link: '/history/history'}
     ],
 
     sidebar: {
-      // ИСПРАВЛЕНО: Добавлен закрывающий слэш, чтобы сайдбар активировался внутри папки clans
+      
       '/clans/': [
         {
           text: 'Валькирия',
@@ -33,15 +34,33 @@ export default defineConfig({
             { text: 'История', link: '/clans/Valkyrie/History' },
             { text: 'Общие фото', link: '/clans/Valkyrie/Photo' }
           ]
+        },
+        {
+          text: 'Обительи Деградаци',
+          items: [
+            { text: 'История', link: '/clans/Obiteli_Degradacii/History' },
+            { text: 'Общие фото', link: '/clans/Obiteli_Degradacii/Photo' }
+          ]
         }
+        
+      ],
+       '/history/': [
+        {
+          text: 'Администрация',
+          items: [
+            { text: 'История', link: '/history/admins/history'},
+            { text: 'Фотографии', link: '/history/admins/photos' }
+          ]
+        },
+
       ],
       
-      // Сайдбар для главной страницы (пока пустой)
+      
       '/': []
     },
 
     socialLinks: [
-      // Изменено на стандартный github, так как refinedgithub может отображаться как пустой квадрат
+      
       { icon: 'github', link: 'https://github.com/NoMorelov3/Community-WikiCatcraft' },
       { icon: 'spotify', link: 'https://open.spotify.com/playlist/05N92YWF1TCGfJMyH0gzHi?si=dfae0a5447b24a2a' }
     ]
