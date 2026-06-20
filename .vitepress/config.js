@@ -41,7 +41,8 @@ export default defineConfig({
     
     nav: [
       { text: 'Кланы', link: '/clans/all' },
-      { text: 'Общая история', link: '/history/history'}
+      { text: 'Общая история', link: '/history/history'},
+      { text: 'Котики', link: '/cats/index'}
     ],
 
     sidebar: {
@@ -72,6 +73,15 @@ export default defineConfig({
           ]
         },
 
+      ],
+      '/cats/': [
+        {
+          text: 'Ваши котики',
+          items: [
+            { text: 'Истории', link: '/cats/history'},
+            { text: 'Другие котики', link: '/cats/other/index'}
+          ]
+        }
       ],
       
       
