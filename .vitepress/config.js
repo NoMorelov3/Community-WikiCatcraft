@@ -39,7 +39,7 @@ export default defineConfig({
           text: 'Обительи Деградаци',
           items: [
             { text: 'История', link: '/clans/Obiteli_Degradacii/History' },
-            { text: 'Общие фото', link: '/clans/Obiteli_Degradacii/Photo' }
+            { text: 'Общие фото', link: '/clans/Obiteli_Degradacii/photo' }
           ]
         }
         
