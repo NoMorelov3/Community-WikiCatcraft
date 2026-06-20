@@ -56,4 +56,4 @@ features:
 
 # <p style="text-align: center;">Наши разработчики</p>
 
-<VPTeamMembers size="small" :members; style="text-align: center/>
+<p style="text-align: center;"><VPTeamMembers size="small" :members /></p>
