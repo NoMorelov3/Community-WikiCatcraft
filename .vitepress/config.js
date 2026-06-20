@@ -81,8 +81,8 @@ export default defineConfig({
         {
           text: 'Ваши котики',
           items: [
-            { text: 'Истории', link: '/cats/history'},
-            { text: 'Другие котики', link: '/cats/other/index'}
+            { text: 'Истории', link: '/cats/cats'},
+            { text: 'Другие котики', link: '/cats/other/othercats'}
           ]
         }
       ],
