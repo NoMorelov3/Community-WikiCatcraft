@@ -50,7 +50,7 @@ export default defineConfig({
 
     sidebar: {
       
-      '/clans/': [
+      '/clans/Valkyrie/History': [
         {
           text: 'Валькирия',
           items: [
@@ -67,7 +67,7 @@ export default defineConfig({
         }
         
       ],
-       '/history/': [
+       '/history/admins/history': [
         {
           text: 'Администрация',
           items: [
@@ -77,7 +77,7 @@ export default defineConfig({
         },
 
       ],
-      '/cats/': [
+      '/cats/cats': [
         {
           text: 'Ваши котики',
           items: [
