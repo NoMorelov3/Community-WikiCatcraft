@@ -1,4 +1,4 @@
-<h1 class="h1">Остальные котики</h1>
+<h2 style="text-align: center;" class="h2">Остальные котики</h2>
 
 :::details котик `Тимофей`! {open}
 ![Котик тимофей](/cats/artem123zzz-cat.jpg)
