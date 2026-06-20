@@ -66,12 +66,14 @@ features:
 
 <h2 style="text-align: center;">Наши разработчики</h2>
 
-<div VPTeamMembers size="small" :members="Admins">
+<div style="display: flex; justify-content: center;">
+  <VPTeamMembers size="small" :members="Admins" />
 </div>
 
 <br>
 
 <h2 style="text-align: center;">Наши Саппорты</h2>
 
-<div VPTeamMembers size="small" :members="Supports">
+<div style="display: flex; justify-content: center;">
+  <VPTeamMembers size="small" :members="Supports" />
 </div>
