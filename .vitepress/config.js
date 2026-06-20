@@ -10,14 +10,15 @@ export default defineConfig({
   publicDir: "assets",
   base: '/Community-WikiCatcraft/', 
   logo: '/icon_yellow.png',
-  lastUpdated: true,
-  search: {
-    provider: 'algolia',
-      options: {
-        appId: '...',
-        apiKey: '...',
-        indexName: '...'
+  lastUpdated: {
+      text: 'Обновлено',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
       }
+    },
+  search: {
+    provider: 'local',
     },
   
 
@@ -31,7 +32,8 @@ export default defineConfig({
       copyright: '© 2026 – Серёжа котиков'
   },
     editLink: {
-      pattern: 'https://github.com/NoMorelov3/Community-WikiCatcraft/blob/main/:path'
+      pattern: 'https://github.com/NoMorelov3/Community-WikiCatcraft/blob/main/:path',
+      text: 'Редактировать эту страницу на GitHub'
     },
 
     logo: '/icon_yellow.png',

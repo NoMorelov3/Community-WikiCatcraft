@@ -34,3 +34,22 @@ features:
       
 
 ---
+
+<script setup>
+  import { VPTeamMembers } from 'vitepress/theme'
+
+  const members = [
+    {
+      avatar: 'https://avatars.githubusercontent.com/u/169675635?v=4',
+      name: 'Эквадор (Он же Никитка)',
+      title: 'Создатель Вики ',
+      links: [
+        { icon: 'github', link: 'https://github.com/NoMorelov3' },
+      ]
+    },
+  ]
+</script>
+
+# Разработчики
+
+<VPTeamMembers size="small" :members />
