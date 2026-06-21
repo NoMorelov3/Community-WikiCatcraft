@@ -144,8 +144,9 @@ const musicTracks = [
 ]
 
 const speakerPhrases = [
-  { url: '/Radio/dictor/voice1.flac' },
-  { url: '/Radio/dictor/voice2.flac' }
+  { url: '/Radio/dictor/voice1.mp3' },
+  { url: '/Radio/dictor/voice2.mp3' },
+  { url: '/Radio/dictor/voice3.mp3' }
 ]
 
 onMounted(() => {
