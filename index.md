@@ -57,26 +57,23 @@ features:
   <div class="space-sun-portal"></div>
 </div>
 
-<br><br>
-<br><br>
-<br><br>
+<div class="main-content-layout">
+  <div class="custom-team-section">
+    <h2 class="custom-section-title">Наши разработчики</h2>
+    <div class="team-centered-wrapper">
+      <VPTeamMembers size="small" :members="Admins" />
+    </div>
+  </div>
 
-<h2 style="text-align: center;" class="custom-section-title">Наши разработчики</h2>
-
-<div style="display: flex; justify-content: center;" class="team-wrapper">
-  <VPTeamMembers size="small" :members="Admins" />
-</div>
-
-<br>
-
-<h2 style="text-align: center;" class="custom-section-title">Наши Саппорты</h2>
-
-<div style="display: flex; justify-content: center;" class="team-wrapper">
-  <VPTeamMembers size="small" :members="Supports" />
+  <div class="custom-team-section">
+    <h2 class="custom-section-title">Наши Саппорты</h2>
+    <div class="team-centered-wrapper">
+      <VPTeamMembers size="small" :members="Supports" />
+    </div>
+  </div>
 </div>
 
 <style>
-/* Кастомная палитра */
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(135deg, #f59e0b 0%, #8b5cf6 100%);
@@ -85,185 +82,93 @@ features:
   --vp-c-brand-next: #60a5fa;
 }
 
-/* ГЛОБАЛЬНЫЙ КОСМИЧЕСКИЙ ХОЛСТ */
+/* ФОНОВЫЙ КОСМОС */
 .space-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  background: #050508;
-  overflow: hidden;
-  pointer-events: none;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: -2; background: #050508; overflow: hidden; pointer-events: none;
 }
-
-/* Глубокие газовые туманности */
 .space-nebula {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 50% 25%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 20% 60%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 80% 40%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
-  filter: blur(60px);
-  transform: scale(1.1);
-  animation: nebulaPulse 20s ease-in-out infinite alternate;
+  position: absolute; width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 40%);
+  filter: blur(60px); animation: nebulaPulse 15s ease-in-out infinite alternate;
 }
-
-/* ЖЕСТКАЯ ПРИВЯЗКА ЗВЕЗДНЫХ СЛОЕВ (Цикличное смещение по background-size во избежание швов) */
 .space-stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-repeat: repeat;
-  will-change: background-position;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-repeat: repeat; will-change: background-position;
 }
+.layer-1 { background-image: radial-gradient(1px 1px at 25px 45px, #fff, transparent); background-size: 300px 300px; opacity: 0.3; animation: starMove 160s linear infinite; }
+.layer-2 { background-image: radial-gradient(1.5px 1.5px at 70px 120px, #60a5fa, transparent); background-size: 400px 400px; opacity: 0.4; animation: starMove 100s linear infinite reverse; }
+.layer-3 { background-image: radial-gradient(2px 2px at 190px 70px, #fff, transparent); background-size: 500px 500px; opacity: 0.3; animation: starMove 60s linear infinite; }
 
-.layer-1 {
-  background-image: radial-gradient(1px 1px at 25px 45px, #fff, transparent),
-                    radial-gradient(1px 1px at 145px 185px, rgba(255,255,255,0.6), transparent),
-                    radial-gradient(1.5px 1.5px at 280px 90px, #fff, transparent);
-  background-size: 300px 300px;
-  opacity: 0.35;
-  animation: starMoveContinuous 160s linear infinite;
-}
-
-.layer-2 {
-  background-image: radial-gradient(1.5px 1.5px at 70px 120px, #60a5fa, transparent),
-                    radial-gradient(2px 2px at 250px 310px, #fcd34d, transparent);
-  background-size: 400px 400px;
-  opacity: 0.5;
-  animation: starMoveContinuous 100s linear infinite reverse;
-}
-
-.layer-3 {
-  background-image: radial-gradient(2px 2px at 190px 70px, #fff, transparent),
-                    radial-gradient(2.5px 2.5px at 340px 280px, rgba(255,255,255,0.8), transparent);
-  background-size: 500px 500px;
-  opacity: 0.4;
-  animation: starMoveContinuous 60s linear infinite, starFlicker 4s ease-in-out infinite alternate;
-}
-
-/* СОЛНЦЕ: Абсолютная фиксация в верхней трети экрана без смещения контентом */
+/* СОЛНЦЕ (Поднято выше, чтобы не наезжать на блоки) */
 .space-sun-portal {
-  position: absolute;
-  top: 320px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 180px;
-  height: 180px;
+  position: absolute; top: 280px; left: 50%; transform: translate(-50%, -50%);
+  width: 160px; height: 160px; border-radius: 50%;
   background: radial-gradient(circle, #ffffff 0%, #fcd34d 30%, #eab308 60%, transparent 100%);
-  border-radius: 50%;
-  filter: blur(8px);
-  box-shadow: 
-    0 0 60px rgba(234, 179, 8, 0.5),
-    0 0 120px rgba(245, 158, 11, 0.3),
-    0 0 250px rgba(139, 92, 246, 0.15);
+  filter: blur(8px); box-shadow: 0 0 100px rgba(245, 158, 11, 0.4);
   animation: sunGlow 8s ease-in-out infinite alternate;
 }
 
-@media (max-width: 960px) {
-  .space-sun-portal {
-    top: 240px;
-    width: 140px;
-    height: 140px;
-  }
+/* ГЛАВНЫЙ ГЕРОЙ (Hero) И ИКОНКА ЛАПКИ */
+:deep(.VPHero) {
+  margin-bottom: 60px !important; /* Увеличиваем отступ от лапки до блоков */
 }
-
-/* ИНТЕГРАЦИЯ С ИНТЕРФЕЙСОМ VITEPRESS */
-:deep(.VPHome), :deep(.VPPage), :deep(.VPContent) {
-  background: transparent !important;
+:deep(.VPHero .container) {
+  padding-bottom: 40px !important;
 }
-
-.VPHero {
-  position: relative;
-  z-index: 1;
-}
-
-/* Контраст для главного текста */
-:deep(.VPHero .name) {
-  text-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
-}
-:deep(.VPHero .text) {
-  color: #f8fafc !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-}
-:deep(.VPHero .tagline) {
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-}
-
-.VPHero .image-src {
-  filter: drop-shadow(0 0 35px rgba(245, 158, 11, 0.3));
+:deep(.VPHero .image-src) {
+  max-width: 280px !important; /* Ограничиваем размер лапки */
+  filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.3));
   animation: floatingHero 6s ease-in-out infinite;
 }
 
-/* Стилизация Glassmorphic карточек Features */
-.VPFeatures .VPLink {
-  background: rgba(10, 10, 16, 0.7) !important;
-  backdrop-filter: blur(14px) saturate(120%);
-  -webkit-backdrop-filter: blur(14px) saturate(120%);
+/* КАРТОЧКИ FEATURES */
+:deep(.VPFeatures) {
+  background: transparent !important;
+  padding: 40px 24px !important;
+}
+:deep(.VPFeatures .VPLink) {
+  background: rgba(10, 10, 16, 0.75) !important;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 20px !important;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.VPFeatures .VPLink:hover {
-  border-color: rgba(245, 158, 11, 0.35) !important;
-  background: rgba(16, 16, 28, 0.85) !important;
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 92, 246, 0.1);
+/* СЕКЦИЯ КОМАНДЫ (Исправление центровки и прозрачности) */
+.main-content-layout {
+  display: flex; flex-direction: column; align-items: center; width: 100%; gap: 80px; margin-top: 40px; padding-bottom: 100px;
 }
-
-/* Команда и Саппорты */
+.custom-team-section {
+  width: 100%; display: flex; flex-direction: column; align-items: center;
+}
 .custom-section-title {
-  font-weight: 800;
-  color: #f1f5f9;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  font-weight: 800; font-size: 1.8rem; color: #f1f5f9; text-shadow: 0 2px 10px #000; margin-bottom: 30px;
+}
+.team-centered-wrapper {
+  width: 100%; display: flex; justify-content: center;
 }
 
-.team-wrapper :deep(.VPTeamMembers) {
-  background: rgba(10, 10, 16, 0.6) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 22px;
-  padding: 16px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.3s;
+/* Глубокий сброс стилей участников */
+:deep(.VPTeamMembers) { background: transparent !important; }
+:deep(.VPTeamMembers .container) {
+  display: flex !important; justify-content: center !important; 
+  flex-wrap: wrap !important; grid-template-columns: none !important; gap: 30px !important;
+}
+:deep(.VPTeamMembers .item) {
+  background: rgba(15, 15, 25, 0.7) !important; /* ПРОЗРАЧНОСТЬ */
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 24px !important;
+  width: 280px !important; margin: 0 !important;
 }
 
-.team-wrapper:hover :deep(.VPTeamMembers) {
-  border-color: rgba(139, 92, 246, 0.25);
-}
+/* Очистка фона VitePress */
+:deep(.VPHome), :deep(.VPPage), :deep(.VPContent) { background: transparent !important; }
 
-/* ОПТИМИЗИРОВАННЫЕ АНИМАЦИИ БЕЗ ШВОВ И СТЫКОВ */
-@keyframes starMoveContinuous {
-  from { background-position: 0 0; }
-  to { background-position: 2000px 1000px; }
-}
-
-@keyframes nebulaPulse {
-  0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-  100% { transform: scale(1.06) rotate(1deg); opacity: 1; }
-}
-
-@keyframes sunGlow {
-  0% { transform: translate(-50%, -50%) scale(0.97); filter: blur(7px); opacity: 0.9; }
-  100% { transform: translate(-50%, -50%) scale(1.03); filter: blur(9px); opacity: 1; }
-}
-
-@keyframes starFlicker {
-  0% { opacity: 0.2; }
-  100% { opacity: 0.65; }
-}
-
-@keyframes floatingHero {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
+/* АНИМАЦИИ */
+@keyframes starMove { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
+@keyframes sunGlow { 0% { transform: translate(-50%, -50%) scale(0.98); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(1.04); opacity: 1; } }
+@keyframes nebulaPulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
+@keyframes floatingHero { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 </style>
