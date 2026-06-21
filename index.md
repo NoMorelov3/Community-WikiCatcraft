@@ -49,16 +49,12 @@ features:
   ]
 </script>
 
-<!-- Полностью обновленный живой космос -->
-<div class="space-background">
+<div class="space-container">
   <div class="space-nebula"></div>
-  <div class="stars-parallax layer-distant"></div>
-  <div class="stars-parallax layer-mid"></div>
-  <div class="stars-parallax layer-close"></div>
-  <div class="sun-system">
-    <div class="sun-corona"></div>
-    <div class="space-sun"></div>
-  </div>
+  <div class="space-stars layer-1"></div>
+  <div class="space-stars layer-2"></div>
+  <div class="space-stars layer-3"></div>
+  <div class="space-sun-portal"></div>
 </div>
 
 <br><br>
@@ -80,203 +76,194 @@ features:
 </div>
 
 <style>
-/* Космические глобальные переменные */
+/* Кастомная палитра */
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+  --vp-home-hero-name-background: linear-gradient(135deg, #f59e0b 0%, #8b5cf6 100%);
   --vp-c-brand-1: #8b5cf6;
   --vp-c-brand-2: #3b82f6;
   --vp-c-brand-next: #60a5fa;
 }
 
-/* ОБНОВЛЕННЫЙ АНИМАЦИОННЫЙ БЭКГРАУНД */
-.space-background {
+/* ГЛОБАЛЬНЫЙ КОСМИЧЕСКИЙ ХОЛСТ */
+.space-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: -2;
-  background: #06060b;
+  background: #050508;
   overflow: hidden;
   pointer-events: none;
 }
 
-/* Космическая туманность на фоне для придания глубины цвета */
+/* Глубокие газовые туманности */
 .space-nebula {
   position: absolute;
-  width: 150%;
-  height: 150%;
-  top: -25%;
-  left: -25%;
+  width: 100%;
+  height: 100%;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.06) 0%, transparent 60%);
-  filter: blur(40px);
-  animation: nebulaDrift 30s ease-in-out infinite alternate;
+    radial-gradient(circle at 50% 25%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 20% 60%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 40%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  filter: blur(60px);
+  transform: scale(1.1);
+  animation: nebulaPulse 20s ease-in-out infinite alternate;
 }
 
-/* СИСТЕМА СОЛНЦА С УЛУЧШЕННОЙ КОРОНОЙ */
-.sun-system {
+/* ЖЕСТКАЯ ПРИВЯЗКА ЗВЕЗДНЫХ СЛОЕВ (Цикличное смещение по background-size во избежание швов) */
+.space-stars {
   position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-.space-sun {
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, #fffdf0 0%, #fcd34d 25%, #f59e0b 55%, #b45309 100%);
-  border-radius: 50%;
-  filter: blur(2px);
-  box-shadow: 
-    0 0 40px #f59e0b,
-    0 0 80px rgba(245, 158, 11, 0.6),
-    0 0 140px rgba(217, 119, 6, 0.3);
-  animation: sunInternalPulse 6s ease-in-out infinite alternate;
-}
-
-/* Внешняя световая корона солнца */
-.sun-corona {
-  position: absolute;
-  top: -40px;
-  left: -40px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(252, 211, 77, 0.25) 0%, rgba(245, 158, 11, 0.08) 50%, transparent 100%);
-  border-radius: 50%;
-  filter: blur(15px);
-  animation: coronaRotate 20s linear infinite;
-}
-
-/* ТРЁХСЛОЙНЫЙ ПАРАЛЛАКС ЗВЁЗД (Движение по диагонали без швов) */
-.stars-parallax {
-  position: absolute;
-  width: 200%;
-  height: 200%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   background-repeat: repeat;
+  will-change: background-position;
 }
 
-/* Дальний слой — микро-звезды */
-.layer-distant {
-  background-image: radial-gradient(1px 1px at 20px 30px, #fff, transparent),
-                    radial-gradient(1.5px 1.5px at 150px 50px, rgba(255,255,255,0.8), transparent),
-                    radial-gradient(1px 1px at 80px 240px, #fff, transparent);
+.layer-1 {
+  background-image: radial-gradient(1px 1px at 25px 45px, #fff, transparent),
+                    radial-gradient(1px 1px at 145px 185px, rgba(255,255,255,0.6), transparent),
+                    radial-gradient(1.5px 1.5px at 280px 90px, #fff, transparent);
   background-size: 300px 300px;
-  opacity: 0.4;
-  animation: parallaxScroll 90s linear infinite;
+  opacity: 0.35;
+  animation: starMoveContinuous 160s linear infinite;
 }
 
-/* Средний слой — цветные тёплые звёзды */
-.layer-mid {
-  background-image: radial-gradient(2px 2px at 40px 180px, #fcd34d, transparent),
-                    radial-gradient(2px 2px at 220px 90px, #60a5fa, transparent),
-                    radial-gradient(1.5px 1.5px at 120px 310px, #f472b6, transparent);
+.layer-2 {
+  background-image: radial-gradient(1.5px 1.5px at 70px 120px, #60a5fa, transparent),
+                    radial-gradient(2px 2px at 250px 310px, #fcd34d, transparent);
   background-size: 400px 400px;
-  opacity: 0.6;
-  animation: parallaxScroll 60s linear infinite;
-}
-
-/* Ближний слой — мерцающие крупные фокусы */
-.layer-close {
-  background-image: radial-gradient(2.5px 2.5px at 100px 60px, #fff, transparent),
-                    radial-gradient(3px 3px at 280px 270px, rgba(255,255,255,0.9), transparent);
-  background-size: 500px 500px;
   opacity: 0.5;
-  animation: parallaxScroll 35s linear infinite, starsFlicker 3s ease-in-out infinite alternate;
+  animation: starMoveContinuous 100s linear infinite reverse;
 }
 
-/* ОЧИСТКА СТАНДАРТНОГО ФОНА VITEPRESS НА ГЛАВНОЙ */
-:deep(.VPHome), :deep(.VPPage) {
+.layer-3 {
+  background-image: radial-gradient(2px 2px at 190px 70px, #fff, transparent),
+                    radial-gradient(2.5px 2.5px at 340px 280px, rgba(255,255,255,0.8), transparent);
+  background-size: 500px 500px;
+  opacity: 0.4;
+  animation: starMoveContinuous 60s linear infinite, starFlicker 4s ease-in-out infinite alternate;
+}
+
+/* СОЛНЦЕ: Абсолютная фиксация в верхней трети экрана без смещения контентом */
+.space-sun-portal {
+  position: absolute;
+  top: 320px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #ffffff 0%, #fcd34d 30%, #eab308 60%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(8px);
+  box-shadow: 
+    0 0 60px rgba(234, 179, 8, 0.5),
+    0 0 120px rgba(245, 158, 11, 0.3),
+    0 0 250px rgba(139, 92, 246, 0.15);
+  animation: sunGlow 8s ease-in-out infinite alternate;
+}
+
+@media (max-width: 960px) {
+  .space-sun-portal {
+    top: 240px;
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* ИНТЕГРАЦИЯ С ИНТЕРФЕЙСОМ VITEPRESS */
+:deep(.VPHome), :deep(.VPPage), :deep(.VPContent) {
   background: transparent !important;
 }
 
-/* СТИЛИЗАЦИЯ HERO И КАРТОЧЕК ДЛЯ ЛУЧШЕЙ ЧИТАЕМОСТИ В КОСМОСЕ */
 .VPHero {
   position: relative;
   z-index: 1;
-  padding: 80px 24px 48px !important;
+}
+
+/* Контраст для главного текста */
+:deep(.VPHero .name) {
+  text-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+}
+:deep(.VPHero .text) {
+  color: #f8fafc !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+:deep(.VPHero .tagline) {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .VPHero .image-src {
-  filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.25));
-  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 35px rgba(245, 158, 11, 0.3));
+  animation: floatingHero 6s ease-in-out infinite;
 }
 
-/* Glassmorphism карточки Features */
+/* Стилизация Glassmorphic карточек Features */
 .VPFeatures .VPLink {
-  background: rgba(15, 15, 25, 0.6) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 10, 16, 0.7) !important;
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 20px !important;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-}
-.VPFeatures .VPLink:hover {
-  border-color: rgba(139, 92, 246, 0.4) !important;
-  background: rgba(139, 92, 246, 0.08) !important;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Переделка дефолтных блоков участников VPTeamMembers */
+.VPFeatures .VPLink:hover {
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  background: rgba(16, 16, 28, 0.85) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+/* Команда и Саппорты */
 .custom-section-title {
   font-weight: 800;
-  letter-spacing: -0.5px;
-  color: #f4f4f5;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
+  color: #f1f5f9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .team-wrapper :deep(.VPTeamMembers) {
-  background: rgba(15, 15, 25, 0.5) !important;
+  background: rgba(10, 10, 16, 0.6) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 24px;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
   transition: border-color 0.3s;
 }
 
 .team-wrapper:hover :deep(.VPTeamMembers) {
-  border-color: rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.25);
 }
 
-/* ТЕХНИЧЕСКИЕ АНИМАЦИИ ДЛЯ НОВОГО ФОНА */
-@keyframes parallaxScroll {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, -50%, 0); }
+/* ОПТИМИЗИРОВАННЫЕ АНИМАЦИИ БЕЗ ШВОВ И СТЫКОВ */
+@keyframes starMoveContinuous {
+  from { background-position: 0 0; }
+  to { background-position: 2000px 1000px; }
 }
 
-@keyframes nebulaDrift {
+@keyframes nebulaPulse {
   0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-  100% { transform: scale(1.1) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1.06) rotate(1deg); opacity: 1; }
 }
 
-@keyframes sunInternalPulse {
-  0% { transform: scale(0.97); filter: blur(2px) brightness(0.95); }
-  100% { transform: scale(1.03); filter: blur(3px) brightness(1.05); }
+@keyframes sunGlow {
+  0% { transform: translate(-50%, -50%) scale(0.97); filter: blur(7px); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1.03); filter: blur(9px); opacity: 1; }
 }
 
-@keyframes coronaRotate {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.05); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-
-@keyframes starsFlicker {
+@keyframes starFlicker {
   0% { opacity: 0.2; }
-  100% { opacity: 0.7; }
+  100% { opacity: 0.65; }
 }
 
-@keyframes float {
+@keyframes floatingHero {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
 }
 </style>
