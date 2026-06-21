@@ -72,14 +72,14 @@ import { withBase } from 'vitepress'
 
 const collapsed = ref(false)
 const isPlaying = ref(false)
-const volume = ref(70) 
+const volume = ref(20) 
 const trackProgress = ref(0)
 const currentTrackTitle = ref('Подключение...')
 const isSpeakerPlaying = ref(false)
 const currentMusicIndex = ref(0)
 
 const audioRef = ref(null)
-let savedVolume = 70
+let savedVolume = 20
 
 const DB_ATTENUATION = 0.316
 
