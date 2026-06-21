@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
-import MusicPlayer from './MusicPlayer.vue'
+import MusicPlayer from '/theme/MusicPlayer.vue'
 
 // https://vitepress.dev/reference/site-config
 
