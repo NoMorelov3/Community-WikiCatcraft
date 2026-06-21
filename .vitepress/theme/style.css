@@ -70,6 +70,19 @@
   --vp-c-danger-soft: var(--vp-c-red-soft);
 }
 
+/* Принудительный сброс цветов всей страницы в тёмную тему */
+:root {
+  --vp-c-bg: #040407 !important;
+  --vp-c-bg-alt: #040407 !important;
+  --vp-c-text-1: #ffffff !important;
+  --vp-c-text-2: #94a3b8 !important;
+}
+
+/* Скрываем переключатель темы, если он всё еще отображается */
+.VPNavBarAppearance {
+  display: none !important;
+}
+
 /**
  * Component: Button
  * -------------------------------------------------------------------------- */
