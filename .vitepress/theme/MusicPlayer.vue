@@ -13,11 +13,13 @@
       @timeupdate="updateProgress"
     ></audio>
 
+    <!-- Кнопка-кружок. Её позиция теперь абсолютно фиксирована в контейнере -->
     <button class="toggle-btn" @click="collapsed = !collapsed" :aria-label="collapsed ? 'Открыть плеер' : 'Свернуть плеер'">
       <span class="icon">{{ isPlaying ? '📻' : '🎵' }}</span>
       <span v-if="collapsed && isPlaying" class="pulse-ring"></span>
     </button>
 
+    <!-- Корпус плеера -->
     <div class="player-body">
       <div class="player-header" @mousedown="startDrag">
         <div class="drag-handle-bar">
@@ -28,8 +30,11 @@
       </div>
 
       <div class="controls-zone">
+        <!-- Радио-диск с иконкой Play/Pause по центру -->
         <div class="radio-disk" :class="{ spinning: isPlaying }" @click="togglePlay" title="Включить/Выключить радио">
-          <div class="disk-center"></div>
+          <div class="disk-center">
+            <span class="play-state-icon">{{ isPlaying ? '⏸️' : '▶️' }}</span>
+          </div>
         </div>
 
         <div class="track-info">
@@ -76,7 +81,6 @@ const currentMusicIndex = ref(0)
 const audioRef = ref(null)
 let savedVolume = 70
 
-// Коэффициент уменьшения громкости на ~10 дБ (0.316 от исходной мощности звука)
 const DB_ATTENUATION = 0.316
 
 const isLongTitle = computed(() => {
@@ -84,7 +88,7 @@ const isLongTitle = computed(() => {
   return title.length > 22
 })
 
-// Полный список треков без пробелов (после очистки через PowerShell)
+// Полный список треков
 const musicTracks = [
   { title: 'C418 - Key (Volume Alpha)', url: '/Radio/01Key.mp3' },
   { title: 'C418 - Door (Volume Alpha)', url: '/Radio/02Door.mp3' },
@@ -178,10 +182,10 @@ function prepareAudio(isFirstStart = false) {
   }
 }
 
+// ... остальная JS логика (nextTrack, togglePlay, changeVolume и т.д.) без изменений
 function nextTrack() {
   const originallyPlaying = isPlaying.value
   const rollDice = Math.random() < 0.25
-
   if (rollDice && !isSpeakerPlaying.value && speakerPhrases.length > 0) {
     isSpeakerPlaying.value = true
     const randomSpeaker = speakerPhrases[Math.floor(Math.random() * speakerPhrases.length)]
@@ -190,11 +194,8 @@ function nextTrack() {
     currentMusicIndex.value = (currentMusicIndex.value + 1) % musicTracks.length
     prepareAudio(false)
   }
-
   if (originallyPlaying) {
-    setTimeout(() => {
-      audioRef.value.play().catch(() => { isPlaying.value = false })
-    }, 100)
+    setTimeout(() => { audioRef.value.play().catch(() => { isPlaying.value = false }) }, 100)
   }
 }
 
@@ -203,14 +204,11 @@ function togglePlay() {
   if (isPlaying.value) {
     audioRef.value.pause()
   } else {
-    audioRef.value.play().catch(() => {
-      console.log("Кликните по интерфейсу.")
-    })
+    audioRef.value.play().catch(() => {})
   }
   isPlaying.value = !isPlaying.value
 }
 
-// При окончании трека автоматически запускается следующий
 function handleTrackEnded() {
   if (isSpeakerPlaying.value) {
     currentMusicIndex.value = (currentMusicIndex.value + 1) % musicTracks.length
@@ -219,20 +217,13 @@ function handleTrackEnded() {
     nextTrack()
     return
   }
-
-  if (isPlaying.value) {
-    setTimeout(() => audioRef.value.play(), 100)
-  }
+  if (isPlaying.value) { setTimeout(() => audioRef.value.play(), 100) }
 }
 
 function changeVolume() {
-  if (audioRef.value) {
-    // Применяем коэффициент затухания к текущему значению ползунка
-    audioRef.value.volume = (volume.value / 100) * DB_ATTENUATION
-  }
+  if (audioRef.value) audioRef.value.volume = (volume.value / 100) * DB_ATTENUATION
 }
 
-// Mute сохраняет относительную громкость
 function muteToggle() {
   if (volume.value > 0) { savedVolume = volume.value; volume.value = 0 } 
   else { volume.value = savedVolume }
@@ -244,7 +235,6 @@ function updateProgress() {
   trackProgress.value = (audioRef.value.currentTime / audioRef.value.duration) * 100
 }
 
-// Перетаскивание плеера мышкой
 const playerRef = ref(null)
 const isDragging = ref(false)
 const position = ref({ top: 120, left: window.innerWidth - 420 })
@@ -271,17 +261,16 @@ function stopDrag() {
 </script>
 
 <style scoped>
-/* Основной контейнер. Позиционирование выстроено относительно правого верхнего угла */
+/* Контейнер теперь имеет фиксированные размеры открытого плеера, чтобы сохранять опорную точку */
 .music-player { 
   position: fixed; 
   z-index: 199; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: flex-end; 
+  width: 340px;
+  height: 330px;
   user-select: none;
 }
 
-/* Кнопка открытия теперь зафиксирована абсолютно на одном месте */
+/* Кнопка-кружок привязана к правому верхнему углу контейнера и больше никуда не смещается */
 .toggle-btn { 
   background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2)); 
   color: white; 
@@ -295,15 +284,15 @@ function stopDrag() {
   justify-content: center; 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   z-index: 200;
 }
 
-/* КОРПУС ПЛЕЕРА С АНИМАЦИЕЙ ОТКРЫТИЯ/ЗАКРЫТИЯ */
+/* КОРПУС ПЛЕЕРА С ИСПРАВЛЕННОЙ АНИМАЦИЕЙ К КНОПКЕ */
 .player-body { 
-  width: 340px; 
-  height: 330px; 
+  width: 100%; 
+  height: 100%; 
   background: rgba(30, 30, 34, 0.85); 
   backdrop-filter: blur(16px); 
   -webkit-backdrop-filter: blur(16px); 
@@ -314,24 +303,27 @@ function stopDrag() {
   display: flex; 
   flex-direction: column; 
   
-  /* Плавный переход для всех деформаций */
-  transition: all 0.40s cubic-bezier(0.25, 1, 0.5, 1);
-  transform-origin: top right;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Точка трансформации находится точно там же, где центр кнопки сворачивания */
+  transform-origin: calc(100% - 34px) 34px;
   opacity: 1;
   transform: scale(1);
 }
 
-/* Состояние плеера в свернутом виде (Анимация сжатия в правый угол) */
+/* Когда свернут: корпус сжимается ровно в точку кнопки, а сам контейнер не мешает кликам */
+.music-player.collapsed {
+  pointer-events: none;
+}
+.music-player.collapsed .toggle-btn {
+  pointer-events: auto; /* Разрешаем кликать только по кнопке */
+}
 .music-player.collapsed .player-body {
-  width: 0px;
-  height: 0px;
   opacity: 0;
   transform: scale(0);
-  pointer-events: none; /* Запрещаем клики по невидимому плееру */
 }
 
-/* ШАПКА */
-.player-header { background: rgba(255, 255, 255, 0.03); padding: 12px 60px 12px 16px; cursor: move; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+/* ШАПКА (С отступом под фиксированную кнопку справа) */
+.player-header { background: rgba(255, 255, 255, 0.03); padding: 16px 65px 16px 16px; cursor: move; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
 .drag-handle-bar { display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #a1a1aa; }
 .live-indicator { color: #71717a; transition: color 0.3s; }
 .live-on { color: #ef4444; animation: blink 1.5s infinite; }
@@ -339,7 +331,7 @@ function stopDrag() {
 /* ИНТЕРФЕЙС УПРАВЛЕНИЯ */
 .controls-zone { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; gap: 16px; }
 
-/* На диске теперь есть hover эффект нажатия */
+/* ДИСК */
 .radio-disk { 
   width: 85px; 
   height: 85px; 
@@ -352,11 +344,31 @@ function stopDrag() {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
   cursor: pointer;
   transition: transform 0.2s;
+  position: relative;
 }
 .radio-disk:hover { transform: scale(1.04); }
 .radio-disk:active { transform: scale(0.96); }
-.disk-center { width: 20px; height: 20px; background: #1e1e22; border-radius: 50%; }
+
+/* ЦЕНТР ДИСКА С ИКОНКОЙ УПРАВЛЕНИЯ */
+.disk-center { 
+  width: 28px; 
+  height: 28px; 
+  background: #1e1e22; 
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-state-icon {
+  font-size: 11px;
+  line-height: 1;
+  /* Корректируем визуальное смещение стрелочки по центру */
+  transform: translateX(0.5px); 
+  transition: transform 0.2s;
+}
 .spinning { animation: spin 4s linear infinite; }
+/* Чтобы при вращении диска иконка внутри не крутилась и не вызывала тошноту */
+.spinning .play-state-icon { animation: spin-reverse 4s linear infinite; }
 
 /* ТРЕК */
 .track-info { width: 100%; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
@@ -386,6 +398,7 @@ function stopDrag() {
 
 /* АНИМАЦИИ */
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes spin-reverse { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 @keyframes marquee {
   0% { transform: translate3d(0, 0, 0); }
