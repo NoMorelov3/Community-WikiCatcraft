@@ -61,19 +61,19 @@ const playlists = [
     title: 'Lo-Fi Chill',
     type: 'spotify',
     url: '1K29UebM8pL9nLN14jsJ4R?si=151b2f25602a4278',
-    icon: 'kofi'
+    cover: '/music-covers/lofi.svg'
   },
   {
-    title: 'Workout',
+    title: 'This vibe...',
     type: 'spotify',
-    id: '37i9dQZF1DWWQRwui0ExPn?si=69eff6d9447a443e', // ID из ссылки open.spotify.com/playlist/ID
-    icon: '/music-covers/workout.jpg'
+    id: '37i9dQZF1DWWQRwui0ExPn?si=69eff6d9447a443e',
+    cover: '/music-covers/phpmyadmin.svg'
   },
   {
-    title: 'Coding Focus',
+    title: 'Макс Корж',
     type: 'soundcloud',
     url: 'https://soundcloud.com/user-128114526/sets/gdpjunle78ra',
-    icon: '/music-covers/coding.jpg'
+    cover: '/music-covers/contentful.svg'
   }
 ]
 

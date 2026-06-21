@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import MusicPlayer from './MusicPlayer.vue'
 
@@ -28,7 +29,7 @@ export default defineConfig({
       'layout-top': () => h(MusicPlayer)
     })
   },
-  
+
 
   head: [
     ['link', { rel: 'icon', href: 'icon_yellow.png' }]
