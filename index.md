@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "Catcraft Wiki"
-  text: "Твой проводник в мире уютного выживания"
-  tagline: "Полная база знаний, гайды, кастомные плагины и уютное комьюнити. Всё, что нужно для комфортной игры, собрано в одном месте."
+  name: "FanCC"
+  text: "Найди новые знания!"
+  tagline: "Сделано сообществом с любовью <3"
   image:
     src: /icon_yellow.png
     alt: Catcraft Logo
@@ -12,16 +12,16 @@ hero:
 features:
   - icon: "🎮"
     title: "Истории"
-    details: "Изучи уникальные фичи сервера, включая VoidBag, продвинутые системы хранения и уникальные предметы, созданные специально для наших игроков."
+    details: "Истории которых нету на оригинальном вики."
   - icon: "📈"
     title: "Гайды"
-    details: "От первых шагов на спавне до тонкостей автоматизации ферм и настройки параллельных схем электропитания. Понятно даже новичку."
+    details: " Подробные инструкции для новичков, объяснение игровых систем, советы и полезные маршруты развития."
   - icon: "🐱"
     title: "Ваши котики"
-    details: "Наша база знаний построена на VitePress — это значит моментальная загрузка страниц, удобный поиск и идеальное отображение как с ПК, так и с телефона."
+    details: "Скриншоты котиков от игроков Кошкокрафта."
   - icon: "💸"
     title: "Экономика"
-    details: "Узнай историю сервера, познакомься с правилами комьюнити, читай про прошедшие ивенты и становись частью нашей большой кошачьей семьи."
+    details: "Развитие экономики, и взаимодействие игроков."
 ---
 
 <script setup>
@@ -49,11 +49,16 @@ features:
   ]
 </script>
 
-<!-- Космический анимированный фон -->
+<!-- Полностью обновленный живой космос -->
 <div class="space-background">
-  <div class="stars-layer-1"></div>
-  <div class="stars-layer-2"></div>
-  <div class="space-sun"></div>
+  <div class="space-nebula"></div>
+  <div class="stars-parallax layer-distant"></div>
+  <div class="stars-parallax layer-mid"></div>
+  <div class="stars-parallax layer-close"></div>
+  <div class="sun-system">
+    <div class="sun-corona"></div>
+    <div class="space-sun"></div>
+  </div>
 </div>
 
 <br><br>
@@ -84,7 +89,7 @@ features:
   --vp-c-brand-next: #60a5fa;
 }
 
-/* КОСМИЧЕСКИЙ ЗАДНИЙ ФОН */
+/* ОБНОВЛЕННЫЙ АНИМАЦИОННЫЙ БЭКГРАУНД */
 .space-background {
   position: fixed;
   top: 0;
@@ -92,47 +97,97 @@ features:
   width: 100vw;
   height: 100vh;
   z-index: -2;
-  background: #0b0b14;
+  background: #06060b;
   overflow: hidden;
   pointer-events: none;
 }
 
-/* Огромное пульсирующее солнце / космическая звезда */
-.space-sun {
+/* Космическая туманность на фоне для придания глубины цвета */
+.space-nebula {
   position: absolute;
-  top: 25%;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.06) 0%, transparent 60%);
+  filter: blur(40px);
+  animation: nebulaDrift 30s ease-in-out infinite alternate;
+}
+
+/* СИСТЕМА СОЛНЦА С УЛУЧШЕННОЙ КОРОНОЙ */
+.sun-system {
+  position: absolute;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, #fcd34d 0%, #f59e0b 30%, #d97706 60%, transparent 100%);
-  border-radius: 50%;
-  filter: blur(20px);
-  opacity: 0.35;
-  animation: sunPulse 8s ease-in-out infinite alternate;
   z-index: -1;
 }
 
-/* Звездный слой 1 (Мелкие частые звезды) */
-.stars-layer-1 {
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow: 15vw 10vh #fff, 35vw 45vh rgba(255,255,255,0.7), 75vw 20vh #fff, 85vw 75vh rgba(255,255,255,0.8), 50vw 80vh #fff, 90vw 40vh #fff, 10vw 85vh rgba(255,255,255,0.6), 60vw 55vh #fff;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  animation: starsTwinkle 4s ease-in-out infinite alternate;
+.space-sun {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #fffdf0 0%, #fcd34d 25%, #f59e0b 55%, #b45309 100%);
+  border-radius: 50%;
+  filter: blur(2px);
+  box-shadow: 
+    0 0 40px #f59e0b,
+    0 0 80px rgba(245, 158, 11, 0.6),
+    0 0 140px rgba(217, 119, 6, 0.3);
+  animation: sunInternalPulse 6s ease-in-out infinite alternate;
 }
 
-/* Звездный слой 2 (Более редкие и крупные синеватые звезды) */
-.stars-layer-2 {
-  width: 3px;
-  height: 3px;
-  background: transparent;
-  box-shadow: 25vw 30vh #60a5fa, 65vw 65vh rgba(147,197,253,0.9), 80vw 85vh #93c5fd, 40vw 15vh rgba(255,255,255,0.5), 15vw 60vh #60a5fa, 95vw 15vh #fff;
+/* Внешняя световая корона солнца */
+.sun-corona {
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  animation: starsTwinkle 6s ease-in-out infinite alternate-reverse;
+  top: -40px;
+  left: -40px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(252, 211, 77, 0.25) 0%, rgba(245, 158, 11, 0.08) 50%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(15px);
+  animation: coronaRotate 20s linear infinite;
+}
+
+/* ТРЁХСЛОЙНЫЙ ПАРАЛЛАКС ЗВЁЗД (Движение по диагонали без швов) */
+.stars-parallax {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 0;
+  background-repeat: repeat;
+}
+
+/* Дальний слой — микро-звезды */
+.layer-distant {
+  background-image: radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+                    radial-gradient(1.5px 1.5px at 150px 50px, rgba(255,255,255,0.8), transparent),
+                    radial-gradient(1px 1px at 80px 240px, #fff, transparent);
+  background-size: 300px 300px;
+  opacity: 0.4;
+  animation: parallaxScroll 90s linear infinite;
+}
+
+/* Средний слой — цветные тёплые звёзды */
+.layer-mid {
+  background-image: radial-gradient(2px 2px at 40px 180px, #fcd34d, transparent),
+                    radial-gradient(2px 2px at 220px 90px, #60a5fa, transparent),
+                    radial-gradient(1.5px 1.5px at 120px 310px, #f472b6, transparent);
+  background-size: 400px 400px;
+  opacity: 0.6;
+  animation: parallaxScroll 60s linear infinite;
+}
+
+/* Ближний слой — мерцающие крупные фокусы */
+.layer-close {
+  background-image: radial-gradient(2.5px 2.5px at 100px 60px, #fff, transparent),
+                    radial-gradient(3px 3px at 280px 270px, rgba(255,255,255,0.9), transparent);
+  background-size: 500px 500px;
+  opacity: 0.5;
+  animation: parallaxScroll 35s linear infinite, starsFlicker 3s ease-in-out infinite alternate;
 }
 
 /* ОЧИСТКА СТАНДАРТНОГО ФОНА VITEPRESS НА ГЛАВНОЙ */
@@ -148,7 +203,7 @@ features:
 }
 
 .VPHero .image-src {
-  filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.25)); /* Подсветка логотипа от солнца */
+  filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.25));
   animation: float 6s ease-in-out infinite;
 }
 
@@ -192,15 +247,31 @@ features:
   border-color: rgba(139, 92, 246, 0.3);
 }
 
-/* АНИМАЦИИ */
-@keyframes sunPulse {
-  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.3; filter: blur(20px); }
-  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.45; filter: blur(30px); box-shadow: 0 0 80px rgba(245, 158, 11, 0.2); }
+/* ТЕХНИЧЕСКИЕ АНИМАЦИИ ДЛЯ НОВОГО ФОНА */
+@keyframes parallaxScroll {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, -50%, 0); }
 }
 
-@keyframes starsTwinkle {
-  0% { opacity: 0.3; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1.02); }
+@keyframes nebulaDrift {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  100% { transform: scale(1.1) rotate(4deg); opacity: 1; }
+}
+
+@keyframes sunInternalPulse {
+  0% { transform: scale(0.97); filter: blur(2px) brightness(0.95); }
+  100% { transform: scale(1.03); filter: blur(3px) brightness(1.05); }
+}
+
+@keyframes coronaRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes starsFlicker {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.7; }
 }
 
 @keyframes float {
