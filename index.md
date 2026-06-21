@@ -6,35 +6,27 @@ hero:
   text: "Твой проводник в мире уютного выживания"
   tagline: "Полная база знаний, гайды, кастомные плагины и уютное комьюнити. Всё, что нужно для комфортной игры, собрано в одном месте."
   image:
-    src: /logo.png
+    src: /icon_yellow.png
     alt: Catcraft Logo
-  actions:
-    - theme: brand
-      text: 🚀 Начать изучение
-      link: /guide/getting-started
-    - theme: alt
-      text: 📻 Слушать Радио
-      link: /guide/radio
-    - theme: alt
-      text: 🐙 GitHub
-      link: https://github.com/Community-WikiCatcraft
 
 features:
-  - icon: "🎒"
-    title: "Кастомные механики"
+  - icon: "🎮"
+    title: "Истории"
     details: "Изучи уникальные фичи сервера, включая VoidBag, продвинутые системы хранения и уникальные предметы, созданные специально для наших игроков."
   - icon: "📈"
-    title: "Подробные гайды"
+    title: "Гайды"
     details: "От первых шагов на спавне до тонкостей автоматизации ферм и настройки параллельных схем электропитания. Понятно даже новичку."
-  - icon: "⚡"
-    title: "Оптимизация и скорость"
-    details: "Наша база знаний построена на VitePress — это значит моментальная загрузка страниц, удобный поиск и идеальное отображение как с ПК, так и с телефона."
   - icon: "🐱"
-    title: "Лор и Сообщество"
+    title: "Ваши котики"
+    details: "Наша база знаний построена на VitePress — это значит моментальная загрузка страниц, удобный поиск и идеальное отображение как с ПК, так и с телефона."
+  - icon: "💸"
+    title: "Экономика"
     details: "Узнай историю сервера, познакомься с правилами комьюнити, читай про прошедшие ивенты и становись частью нашей большой кошачьей семьи."
 ---
 
 <script setup>
+  import { VPTeamMembers } from 'vitepress/theme'
+
   const Admins = [
     {
       avatar: 'https://avatars.githubusercontent.com/u/169675635?v=4',
@@ -57,242 +49,163 @@ features:
   ]
 </script>
 
-<!-- СЕКЦИЯ КОМАНДЫ -->
-<div class="team-section">
-  
-  <div class="team-block">
-    <h2 class="team-heading">⚡ Разработчики</h2>
-    <div class="team-grid">
-      <div v-for="member in Admins" :key="member.name" class="custom-member-card">
-        <div class="avatar-wrapper">
-          <img :src="member.avatar" :alt="member.name" class="member-avatar" />
-        </div>
-        <div class="member-info">
-          <h3 class="member-name">{{ member.name }}</h3>
-          <p class="member-title">{{ member.title }}</p>
-          <div class="member-links">
-            <a v-for="link in member.links" :key="link.link" :href="link.link" target="_blank" class="member-link-btn" :class="link.icon">
-              <span v-if="link.icon === 'github'">🐙 GitHub</span>
-              <span v-else-if="link.icon === 'discord'">💬 Discord</span>
-              <span v-else>🔗 Ссылка</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Космический анимированный фон -->
+<div class="space-background">
+  <div class="stars-layer-1"></div>
+  <div class="stars-layer-2"></div>
+  <div class="space-sun"></div>
+</div>
 
-  <div class="team-block">
-    <h2 class="team-heading">💖 Саппорты</h2>
-    <div class="team-grid">
-      <div v-for="member in Supports" :key="member.name" class="custom-member-card support-card">
-        <div class="avatar-wrapper">
-          <img :src="member.avatar" :alt="member.name" class="member-avatar" />
-        </div>
-        <div class="member-info">
-          <h3 class="member-name">{{ member.name }}</h3>
-          <p class="member-title">{{ member.title }}</p>
-          <div class="member-links">
-            <a v-for="link in member.links" :key="link.link" :href="link.link" target="_blank" class="member-link-btn" :class="link.icon">
-              <span v-if="link.icon === 'github'">🐙 GitHub</span>
-              <span v-else-if="link.icon === 'discord'">💬 Discord</span>
-              <span v-else>🔗 Ссылка</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<br><br>
+<br><br>
+<br><br>
 
+<h2 style="text-align: center;" class="custom-section-title">Наши разработчики</h2>
+
+<div style="display: flex; justify-content: center;" class="team-wrapper">
+  <VPTeamMembers size="small" :members="Admins" />
+</div>
+
+<br>
+
+<h2 style="text-align: center;" class="custom-section-title">Наши Саппорты</h2>
+
+<div style="display: flex; justify-content: center;" class="team-wrapper">
+  <VPTeamMembers size="small" :members="Supports" />
 </div>
 
 <style>
+/* Космические глобальные переменные */
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+  --vp-home-hero-name-background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
   --vp-c-brand-1: #8b5cf6;
   --vp-c-brand-2: #3b82f6;
   --vp-c-brand-next: #60a5fa;
 }
 
-/* ФОНОВОЕ СВЕЧЕНИЕ HERO */
-.VPHero::before {
-  content: ""; position: absolute; top: -10%; right: 15%; width: 350px; height: 350px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%); z-index: -1; filter: blur(40px);
-}
-.VPHero::after {
-  content: ""; position: absolute; bottom: 10%; left: 10%; width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%); z-index: -1; filter: blur(40px);
+/* КОСМИЧЕСКИЙ ЗАДНИЙ ФОН */
+.space-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: #0b0b14;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.VPHero { padding: 80px 24px 48px !important; }
-@media (min-width: 640px) { .VPHero { padding: 112px 48px 64px !important; } }
-@media (min-width: 960px) { .VPHero { padding: 128px 64px 80px !important; } }
+/* Огромное пульсирующее солнце / космическая звезда */
+.space-sun {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #fcd34d 0%, #f59e0b 30%, #d97706 60%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.35;
+  animation: sunPulse 8s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+/* Звездный слой 1 (Мелкие частые звезды) */
+.stars-layer-1 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 15vw 10vh #fff, 35vw 45vh rgba(255,255,255,0.7), 75vw 20vh #fff, 85vw 75vh rgba(255,255,255,0.8), 50vw 80vh #fff, 90vw 40vh #fff, 10vw 85vh rgba(255,255,255,0.6), 60vw 55vh #fff;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  animation: starsTwinkle 4s ease-in-out infinite alternate;
+}
+
+/* Звездный слой 2 (Более редкие и крупные синеватые звезды) */
+.stars-layer-2 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 25vw 30vh #60a5fa, 65vw 65vh rgba(147,197,253,0.9), 80vw 85vh #93c5fd, 40vw 15vh rgba(255,255,255,0.5), 15vw 60vh #60a5fa, 95vw 15vh #fff;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  animation: starsTwinkle 6s ease-in-out infinite alternate-reverse;
+}
+
+/* ОЧИСТКА СТАНДАРТНОГО ФОНА VITEPRESS НА ГЛАВНОЙ */
+:deep(.VPHome), :deep(.VPPage) {
+  background: transparent !important;
+}
+
+/* СТИЛИЗАЦИЯ HERO И КАРТОЧЕК ДЛЯ ЛУЧШЕЙ ЧИТАЕМОСТИ В КОСМОСЕ */
+.VPHero {
+  position: relative;
+  z-index: 1;
+  padding: 80px 24px 48px !important;
+}
 
 .VPHero .image-src {
-  filter: drop-shadow(0 10px 30px rgba(139, 92, 246, 0.3));
+  filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.25)); /* Подсветка логотипа от солнца */
   animation: float 6s ease-in-out infinite;
 }
 
-/* FEATURES КАРТОЧКИ */
+/* Glassmorphism карточки Features */
 .VPFeatures .VPLink {
-  background: rgba(30, 30, 34, 0.4) !important;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05) !important; border-radius: 20px !important;
+  background: rgba(15, 15, 25, 0.6) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 20px !important;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 .VPFeatures .VPLink:hover {
   border-color: rgba(139, 92, 246, 0.4) !important;
-  background: rgba(139, 92, 246, 0.05) !important;
-  transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-}
-.VPFeatures .icon {
-  background: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px; width: 48px; height: 48px; font-size: 24px;
-  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+  background: rgba(139, 92, 246, 0.08) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* СТИЛИЗАЦИЯ СЕКЦИИ КОМАНДЫ */
-.team-section {
-  max-width: 1152px;
-  margin: 80px auto 120px;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-
-.team-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
-.team-heading {
-  font-size: 24px;
+/* Переделка дефолтных блоков участников VPTeamMembers */
+.custom-section-title {
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: var(--vp-c-text-1);
-  position: relative;
-  margin-bottom: 8px;
+  color: #f4f4f5;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
 }
 
-.team-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-  width: 100%;
+.team-wrapper :deep(.VPTeamMembers) {
+  background: rgba(15, 15, 25, 0.5) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.3s;
 }
 
-/* КАСТОМНЫЕ КАРТОЧКИ УЧАСТНИКОВ */
-.custom-member-card {
-  background: rgba(30, 30, 34, 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 24px;
-  width: 280px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Мягкая подсветка карт при наведении */
-.custom-member-card:hover {
-  transform: translateY(-4px);
-  background: rgba(139, 92, 246, 0.04);
+.team-wrapper:hover :deep(.VPTeamMembers) {
   border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
 }
 
-/* Персонализированный розовый оттенок для саппортов */
-.support-card:hover {
-  background: rgba(236, 72, 153, 0.04);
-  border-color: rgba(236, 72, 153, 0.3);
-  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.1);
+/* АНИМАЦИИ */
+@keyframes sunPulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.3; filter: blur(20px); }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.45; filter: blur(30px); box-shadow: 0 0 80px rgba(245, 158, 11, 0.2); }
 }
 
-/* Аватарки */
-.avatar-wrapper {
-  position: relative;
-  margin-bottom: 16px;
-}
-.member-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s;
-}
-.custom-member-card:hover .member-avatar {
-  transform: scale(1.05);
-  border-color: var(--vp-c-brand-1);
-}
-.support-card:hover .member-avatar {
-  border-color: #ec4899;
-}
-
-/* Текст */
-.member-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-  margin: 0 0 4px 0;
-}
-.member-title {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--vp-c-text-2);
-  margin: 0 0 16px 0;
-}
-
-/* Кнопки соцсетей */
-.member-links {
-  width: 100%;
-  margin-top: auto;
-}
-.member-link-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 10px;
-  text-decoration: none !important;
-  width: 100%;
-  transition: background 0.2s, color 0.2s;
-}
-
-.member-link-btn.github {
-  background: rgba(255, 255, 255, 0.06);
-  color: #e4e4e7;
-}
-.member-link-btn.github:hover {
-  background: #f4f4f5;
-  color: #09090b;
-}
-
-.member-link-btn.discord {
-  background: rgba(88, 101, 242, 0.15);
-  color: #5865f2;
-}
-.member-link-btn.discord:hover {
-  background: #5865f2;
-  color: #ffffff;
+@keyframes starsTwinkle {
+  0% { opacity: 0.3; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1.02); }
 }
 
 @keyframes float {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+  50% { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
 </style>
