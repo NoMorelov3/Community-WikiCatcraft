@@ -28,10 +28,10 @@ features:
   import { VPTeamMembers } from 'vitepress/theme'
   import { ref, onMounted, onUnmounted } from 'vue'
 
-  // Логика плавного параллакса для Солнца (движется медленнее скролла)
+  // Логика плавного параллакса для Солнца
   const scrollOffset = ref(0)
   const handleScroll = () => {
-    scrollOffset.value = window.scrollY * 0.35 // Коэффициент скорости движения солнца
+    scrollOffset.value = window.scrollY * 0.35
   }
 
   onMounted(() => window.addEventListener('scroll', handleScroll))
@@ -127,7 +127,7 @@ features:
   background-size: 450px 450px; opacity: 0.65; animation: starMove 50s linear infinite, starFlicker 3s ease-in-out infinite alternate; 
 }
 
-/* ЖИВОЕ СОЛНЦЕ ИЗНАЧАЛЬНО ПОД ЛАПКОЙ (Параллакс рассчитывается скриптом сверху) */
+/* ЖИВОЕ СОЛНЦЕ ИЗНАЧАЛЬНО ПОД ЛАПКОЙ */
 .space-sun-portal {
   position: absolute; 
   top: 300px; 
@@ -164,7 +164,7 @@ features:
 :deep(.VPFeatures .item),
 :deep(.VPFeatures .VPLink),
 :deep(.VPTeamMembers .item) {
-  background: rgba(12, 12, 20, 0.6) !important; /* Настоящая глубокая прозрачность */
+  background: rgba(12, 12, 20, 0.6) !important;
   backdrop-filter: blur(18px) saturate(140%) !important; 
   -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
@@ -192,10 +192,19 @@ features:
 }
 .team-centered-wrapper { width: 100%; display: flex; justify-content: center; }
 
-:deep(.VPTeamMembers) { background: transparent !important; width: 100%; }
+:deep(.VPTeamMembers) { background: transparent !important; width: 100%; margin: 0 !important; padding: 0 !important; }
+
+/* ИСПРАВЛЕНИЕ: Тотальный сброс внутренних сеток и отступов VitePress для идеальной центровки */
 :deep(.VPTeamMembers .container) {
-  display: flex !important; justify-content: center !important; 
-  flex-wrap: wrap !important; grid-template-columns: none !important; gap: 30px !important;
+  display: flex !important; 
+  justify-content: center !important; 
+  align-items: center !important;
+  flex-wrap: wrap !important; 
+  grid-template-columns: none !important; 
+  gap: 30px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  max-width: 100% !important;
 }
 :deep(.VPTeamMembers .item) { width: 280px !important; margin: 0 !important; }
 
