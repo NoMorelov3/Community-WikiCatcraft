@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import DefaultTheme from 'vitepress/theme'
+import MusicPlayer from './MusicPlayer.vue'
 
 // https://vitepress.dev/reference/site-config
 
@@ -20,6 +22,12 @@ export default defineConfig({
       }
     },
   
+  extends: DefaultTheme,
+  Layout() {
+    return h(DefaultTheme.Layout, null, {
+      'layout-top': () => h(MusicPlayer)
+    })
+  },
   
 
   head: [
